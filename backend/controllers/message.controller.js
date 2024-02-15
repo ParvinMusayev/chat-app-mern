@@ -27,9 +27,24 @@ export const sendMessage = async (req, res) => {
       conversation.messages.push(newMessage._id);
     }
 
+    // await conversation.save();
+    // await newMessage.save();
+
+    // this will run in parallel
+    await Promise.all([conversation.save(), newMessage.save()]);
+
     res.status(201).json(newMessage);
   } catch (error) {
     console.log("Error in sendMessage controller: ", error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const getMessages = async (req, res) => {
+  res.status(200).json(messages);
+  try {
+  } catch (error) {
+    console.log("Error in getMessages controller: ", error.message);
     res.status(500).json({ error: "Internal server error" });
   }
 };
