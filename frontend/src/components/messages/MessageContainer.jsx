@@ -1,4 +1,5 @@
 
+import MessageInput from "./MessageInput ";
 import Messages from "./Messages";
 
 const MessageContainer = () => {
@@ -12,7 +13,7 @@ const MessageContainer = () => {
         </div>
 
         <Messages />
-        {/* <MessageInput /> */}
+        <MessageInput />
       </>
     </div>
   );
